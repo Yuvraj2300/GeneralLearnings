@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="jdbc"/>
 	<classpathentry kind="src" path="oca"/>
 	<classpathentry kind="src" path="jax-ws"/>
+	<classpathentry kind="src" path="Chapter18Collections"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
