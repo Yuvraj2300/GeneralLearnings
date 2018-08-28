@@ -1,5 +1,6 @@
 package com.Test.RestDB.entity;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import javax.persistence.Entity;
@@ -10,11 +11,15 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 
 @Entity
 @Table(name = "car")
-public class Car {
+public class Car implements	Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3820569458698558117L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,9 +28,9 @@ public class Car {
 
 	private String manufacturer;
 
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	/*@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime manufacturedate;
-
+*/
 	private int age;
 
 	@Version
@@ -63,13 +68,6 @@ public class Car {
 		this.manufacturer = manufacturer;
 	}
 
-	public DateTime getManufacturedate() {
-		return manufacturedate;
-	}
-
-	public void setManufacturedate(DateTime manufacturedate) {
-		this.manufacturedate = manufacturedate;
-	}
 
 	public int getAge() {
 		return age;
@@ -79,11 +77,11 @@ public class Car {
 		this.age = age;
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return String.format("{License: %s, Manufacturer: %s,Manufacture Date: %s, Age: %d}", licensePlate,
 				manufacturer, sdf.format(manufacturedate.toDate()), age);
 	}
-
+*/
 }
