@@ -178,8 +178,11 @@ ext {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'war'
+
 //apply plugin: 'org.springframework.boot'
 //apply plugin: 'io.spring.dependency-management'
+
 
 
 // In this section you declare where to find the dependencies of your project

@@ -17,7 +17,8 @@ import com.learn.mvc.repo.SingerRepository;
 @Service("singerService")
 public class SingerServiceImpl implements SingerService {
 
-	private SingerRepository singerRepository;
+	@Autowired
+	 SingerRepository singerRepository;
 
 	@Override
 	@Transactional(readOnly = true)
