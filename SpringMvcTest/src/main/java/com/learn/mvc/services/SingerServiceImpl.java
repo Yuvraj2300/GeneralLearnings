@@ -1,4 +1,4 @@
-/*package com.learn.mvc.services;
+package com.learn.mvc.services;
 
 import java.util.List;
 
@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
-import com.learn.mvc.entites.Singer;
+import com.learn.mvc.entities.Singer;
 import com.learn.mvc.repo.SingerRepository;
 
 @Transactional
 @Service("singerService")
 public class SingerServiceImpl implements SingerService {
 
-	private	SingerRepository singerRepository;
+	private SingerRepository singerRepository;
 
 	@Autowired
 	public void setSingerRepository(SingerRepository singerRepository) {
@@ -47,4 +47,3 @@ public class SingerServiceImpl implements SingerService {
 	}
 
 }
-*/

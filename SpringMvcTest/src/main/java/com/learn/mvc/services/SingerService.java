@@ -1,11 +1,11 @@
-/*package com.learn.mvc.services;
+package com.learn.mvc.services;
 
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.learn.mvc.entites.Singer;
+import com.learn.mvc.entities.Singer;
 
 public interface SingerService {
 	List<Singer> findAll();
@@ -16,4 +16,3 @@ public interface SingerService {
 
 	Page<Singer> findAllByPage(Pageable pageable);	
 }
-*/
