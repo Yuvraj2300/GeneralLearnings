@@ -1,4 +1,4 @@
-package com.learn.mvc.services;
+/*package com.learn.mvc.services;
 
 import java.util.List;
 
@@ -12,13 +12,16 @@ import com.google.common.collect.Lists;
 import com.learn.mvc.entites.Singer;
 import com.learn.mvc.repo.SingerRepository;
 
-
 @Transactional
 @Service("singerService")
 public class SingerServiceImpl implements SingerService {
 
+	private	SingerRepository singerRepository;
+
 	@Autowired
-	 SingerRepository singerRepository;
+	public void setSingerRepository(SingerRepository singerRepository) {
+		this.singerRepository = singerRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -37,11 +40,6 @@ public class SingerServiceImpl implements SingerService {
 		return singerRepository.save(singer);
 	}
 
-	@Autowired
-	public void setSingerRepository(SingerRepository singerRepository) {
-		this.singerRepository = singerRepository;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public Page<Singer> findAllByPage(Pageable pageable) {
@@ -49,3 +47,4 @@ public class SingerServiceImpl implements SingerService {
 	}
 
 }
+*/

@@ -39,7 +39,7 @@ public class DataServiceConfig {
 	@Bean
 	public Properties hibernateProperties() {
 		Properties hibernateProp = new Properties();
-		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		hibernateProp.put("hibernate.hbm2ddl.auto", "update");
 		hibernateProp.put("hibernate.show_sql", true);
 		hibernateProp.put("hibernate.max_fetch_depth", 3);
@@ -61,7 +61,7 @@ public class DataServiceConfig {
 	@Bean
 	public EntityManagerFactory entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("com.apress.prospring5.ch16.entities");
+		factoryBean.setPackagesToScan("com.learn.mvc.entities");
 		factoryBean.setDataSource(dataSource());
 		factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		factoryBean.setJpaProperties(hibernateProperties());

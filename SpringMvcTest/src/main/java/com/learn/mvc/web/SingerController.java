@@ -11,29 +11,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.learn.mvc.entites.Singer;
-import com.learn.mvc.services.SingerService;
+import com.google.common.collect.Lists;
+import com.learn.mvc.entities.Singer;
+import com.learn.mvc.repo.SingerRepository;
 
 @RequestMapping("/singers")
 @Controller
 public class SingerController {
 	private final Logger logger = LoggerFactory.getLogger(SingerController.class);
-
-	private SingerService singerService;
+	
+	@Autowired
+	private SingerRepository singerRep;
+	
 	private MessageSource messaageSource;
 
 	@GetMapping
 	public String list(Model uiModel) {
 		logger.info("Listing singers");
-		List<Singer> singers = singerService.findAll();
+		List<Singer> singers = Lists.newArrayList(singerRep.findAll());
 		uiModel.addAttribute("singers", singers);
 
 		return "singers/list";
 	}
-
-	@Autowired
-	public void setSingerService(SingerService singerService) {
-		this.singerService = singerService;
-	}
-
 }

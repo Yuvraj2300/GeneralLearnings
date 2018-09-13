@@ -1,4 +1,4 @@
-package com.learn.mvc.services;
+/*package com.learn.mvc.services;
 
 import java.util.List;
 
@@ -16,3 +16,4 @@ public interface SingerService {
 
 	Page<Singer> findAllByPage(Pageable pageable);	
 }
+*/
