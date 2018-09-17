@@ -6,7 +6,7 @@
 
 	<h1>Singer Listing</h1>
 
-	<c:if test="${not emplty singers} }">
+	<c:if test="${not empty singers} }">
 		<table>
 			<thead>
 				<tr>
@@ -20,7 +20,7 @@
 					<tr>
 						<td>${singer.firstName}</td>
 						<td>${singer.lastName}</td>
-						<td>${singer.birthDate}</td>
+						<td><fmt:formatDate value="${singer.birthDate}"/></td>
 					</tr>
 				</c:forEach>
 			</tbody>
