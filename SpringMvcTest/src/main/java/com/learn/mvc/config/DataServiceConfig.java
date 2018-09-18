@@ -40,7 +40,7 @@ public class DataServiceConfig {
 	public Properties hibernateProperties() {
 		Properties hibernateProp = new Properties();
 		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-		hibernateProp.put("hibernate.hbm2ddl.auto", "update");
+		hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
 		hibernateProp.put("hibernate.show_sql", true);
 		hibernateProp.put("hibernate.max_fetch_depth", 3);
 		hibernateProp.put("hibernate.jdbc.batch_size", 10);
