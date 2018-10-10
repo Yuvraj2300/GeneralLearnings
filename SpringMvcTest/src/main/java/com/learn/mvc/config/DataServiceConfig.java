@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -26,14 +28,21 @@ public class DataServiceConfig {
 
 	@Bean
 	DataSource dataSource() {
-		org.apache.tomcat.jdbc.pool.DataSource dataSourceConfig = new org.apache.tomcat.jdbc.pool.DataSource();
+		/*org.apache.tomcat.jdbc.pool.DataSource dataSourceConfig = new org.apache.tomcat.jdbc.pool.DataSource();
 		dataSourceConfig.setDriverClassName("org.postgresql.Driver");
 
 		dataSourceConfig.setUrl("jdbc:postgresql://127.0.0.1:5432/testDB");
 		dataSourceConfig.setUsername("postgres");
 		dataSourceConfig.setPassword("postgres");
 
-		return dataSourceConfig;
+		return dataSourceConfig;*/
+		try {
+			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+			return dbBuilder.setType(EmbeddedDatabaseType.H2).build();
+		} catch (Exception e) {
+			logger.error("Embedded DataSource bean cannot be created!", e);
+			return null;
+		}
 	}
 
 	@Bean

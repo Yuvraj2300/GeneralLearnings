@@ -62,7 +62,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
-//		registry.addInterceptor(themeChangeInterceptor());
+		registry.addInterceptor(themeChangeInterceptor());
 	}
 
 	@Bean
@@ -73,12 +73,12 @@ public class WebConfig implements WebMvcConfigurer {
 		return localeInterceptor;
 	}
 	
-/*	//ADDED THEMECHANGE
+	//ADDED THEMECHANGE
 	@Bean
 	ThemeChangeInterceptor	themeChangeInterceptor() {
 		return	new	ThemeChangeInterceptor();
 	}
-*/
+
 	@Bean
 	CookieLocaleResolver localeResolver() {
 		CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
@@ -88,12 +88,12 @@ public class WebConfig implements WebMvcConfigurer {
 		return cookieLocaleResolver;
 	}
 
-/*	@Bean
+	@Bean
 	ResourceBundleThemeSource themeSource() {
 		return new ResourceBundleThemeSource();
 	}
-*/
-	/*@Bean
+
+	@Bean
 	CookieThemeResolver themeResolver() {
 		CookieThemeResolver cookieThemeResolver = new CookieThemeResolver();
 		cookieThemeResolver.setDefaultThemeName("standard");
@@ -101,5 +101,5 @@ public class WebConfig implements WebMvcConfigurer {
 		cookieThemeResolver.setCookieName("theme");
 		return cookieThemeResolver;
 	}
-*/
+
 }
