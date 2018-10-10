@@ -6,9 +6,10 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer">
 		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="WebContent/lib/javax.servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/javax.servlet.jsp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

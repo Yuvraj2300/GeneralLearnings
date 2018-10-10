@@ -9,6 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.learn.mvc.entities.Singer;
@@ -24,6 +25,14 @@ public class SingerController {
 	
 	private MessageSource messaageSource;
 
+	@GetMapping("/{id}")
+	public String show(@PathVariable("id") Long id, Model uiModel) {
+		Singer singer = singerService.findById(id);
+		uiModel.addAttribute("singer", singer);
+		return "singers/show";
+	}
+	
+	
 	@GetMapping
 	public String list(Model uiModel) {
 		logger.info("Listing singers");

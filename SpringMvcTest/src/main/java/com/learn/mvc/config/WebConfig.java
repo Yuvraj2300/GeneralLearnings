@@ -17,7 +17,9 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @Configuration
 @EnableWebMvc
@@ -30,7 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/WebContent/").setCachePeriod(31556926);
 	}
 
-	@Bean
+	/*@Bean
 	InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		// resolver.setPrefix("/WEB-INF/views/");
@@ -38,6 +40,23 @@ public class WebConfig implements WebMvcConfigurer {
 		resolver.setSuffix(".jspx");
 		resolver.setRequestContextAttribute("requestContext");
 		return resolver;
+	}*/
+	@Bean
+	UrlBasedViewResolver	tilesViewResolver() {
+		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+		tilesViewResolver.setViewClass(TilesView.class);
+		return tilesViewResolver;
+	}
+	
+	@Bean
+	TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tilesConfigurer = new TilesConfigurer();
+		tilesConfigurer.setDefinitions(
+				"/layouts/layouts.xml",
+				"/views/**/views.xml"
+		);
+		tilesConfigurer.setCheckRefresh(true);
+		return tilesConfigurer;
 	}
 
 	@Override
