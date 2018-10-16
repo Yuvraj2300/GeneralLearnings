@@ -45,5 +45,9 @@ public class SingerServiceImpl implements SingerService {
 	public Page<Singer> findAllByPage(Pageable pageable) {
 		return singerRepository.findAll(pageable);
 	}
+	
+	public	void	delete(Singer	singer) {
+		singerRepository.delete(singer);
+	}
 
 }

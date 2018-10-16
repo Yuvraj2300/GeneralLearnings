@@ -11,6 +11,8 @@ public interface SingerService {
 	List<Singer> findAll();
 
 	Singer findById(Long id);
+	
+	void	delete(Singer	singer);
 
 	Singer save(Singer singer);
 
