@@ -60,7 +60,7 @@ public class SingerController {
 	public String createForm(Model uiModel) {
 		Singer singer = new Singer();
 		uiModel.addAttribute("singer", singer);
-		return "redirect:/singers/";
+		return "singers/create";
 	}
 
 	@GetMapping("/{id}")

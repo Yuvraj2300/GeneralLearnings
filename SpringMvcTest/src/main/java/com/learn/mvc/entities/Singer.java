@@ -17,8 +17,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "singer")
@@ -33,11 +34,11 @@ public class Singer implements Serializable {
 	@Version
 	@Column(name = "VERSION")
 	private int version;
-	// @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
+	@NotEmpty(message = "{validation.firstname.NotEmpty.message}")
 	@Size(min = 3, max = 60, message = "{validation.firstname.Size.message}")
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	// @NotEmpty(message = "{validation.lastname.NotEmpty.message}")
+	@NotEmpty(message = "{validation.lastname.NotEmpty.message}")
 	@Size(min = 1, max = 40, message = "{validation.lastname.Size.message}")
 	@Column(name = "LAST_NAME")
 	private String lastName;

@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -26,35 +28,41 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 @ComponentScan(basePackages = { "com.learn.mvc" })
 public class WebConfig implements WebMvcConfigurer {
 
+	@Bean
+	public Validator validator() {
+		final LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+		validator.setValidationMessageSource(messageSource());
+		return validator;
+	}
+
+	public Validator getValidator() {
+		return validator();
+	}
+
 	// DECLARING THE STATIC RESOURCES
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/WebContent/").setCachePeriod(31556926);
 	}
 
-	/*@Bean
-	InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		// resolver.setPrefix("/WEB-INF/views/");
-		resolver.setPrefix("/views/");
-		resolver.setSuffix(".jspx");
-		resolver.setRequestContextAttribute("requestContext");
-		return resolver;
-	}*/
+	/*
+	 * @Bean InternalResourceViewResolver viewResolver() {
+	 * InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+	 * // resolver.setPrefix("/WEB-INF/views/"); resolver.setPrefix("/views/");
+	 * resolver.setSuffix(".jspx");
+	 * resolver.setRequestContextAttribute("requestContext"); return resolver; }
+	 */
 	@Bean
-	UrlBasedViewResolver	tilesViewResolver() {
+	UrlBasedViewResolver tilesViewResolver() {
 		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
 		tilesViewResolver.setViewClass(TilesView.class);
 		return tilesViewResolver;
 	}
-	
+
 	@Bean
 	TilesConfigurer tilesConfigurer() {
 		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		tilesConfigurer.setDefinitions(
-				"/layouts/layouts.xml",
-				"/views/**/views.xml"
-		);
+		tilesConfigurer.setDefinitions("/layouts/layouts.xml", "/views/**/views.xml");
 		tilesConfigurer.setCheckRefresh(true);
 		return tilesConfigurer;
 	}
@@ -86,16 +94,16 @@ public class WebConfig implements WebMvcConfigurer {
 
 	@Bean
 	LocaleChangeInterceptor localeChangeInterceptor() {
-		//BOOK IS NOT SETTING THE CUSTOM PARAMETER.....
-		LocaleChangeInterceptor	localeInterceptor	=	new	LocaleChangeInterceptor();
+		// BOOK IS NOT SETTING THE CUSTOM PARAMETER.....
+		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
 		localeInterceptor.setParamName("lang");
 		return localeInterceptor;
 	}
-	
-	//ADDED THEMECHANGE
+
+	// ADDED THEMECHANGE
 	@Bean
-	ThemeChangeInterceptor	themeChangeInterceptor() {
-		return	new	ThemeChangeInterceptor();
+	ThemeChangeInterceptor themeChangeInterceptor() {
+		return new ThemeChangeInterceptor();
 	}
 
 	@Bean
