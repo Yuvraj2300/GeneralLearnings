@@ -9,6 +9,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -28,6 +29,11 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 @ComponentScan(basePackages = { "com.learn.mvc" })
 public class WebConfig implements WebMvcConfigurer {
 
+	@Bean
+	StandardServletMultipartResolver	multipartResolver() {
+		return	new	StandardServletMultipartResolver();
+	}
+	
 	@Bean
 	public Validator validator() {
 		final LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();

@@ -45,7 +45,8 @@
 	<h1>${formTitle}</h1>
 	<div id="singerUpdate">
 
-		<form:form modelAttribute="singer" id="singerUpdateForm" method="post">
+		<form:form modelAttribute="singer" id="singerUpdateForm" method="post"
+			enctype="multipart/form-data">
 			<c:if test="${not empty message}">
 				<div id="message" class="${message.type}">${message.message}</div>
 			</c:if>
@@ -88,7 +89,9 @@ ${labelSingerDescription}
 			</div>
 			<p />
 
-			<label for="file"> ${labelSingerPhoto} </label>
+			<label for="file"> 
+				${labelSingerPhoto} 
+			</label>
 			<input name="file" type="file" />
 			<p />
 			<form:hidden path="version" />

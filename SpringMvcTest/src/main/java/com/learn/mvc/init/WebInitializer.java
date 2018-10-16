@@ -2,7 +2,10 @@ package com.learn.mvc.init;
 
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -38,5 +41,18 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		cef.setForceEncoding(true);
 		return new Filter[] { new HiddenHttpMethodFilter(), cef };
 	}
+	
+	
+	protected	void	customizeRegistration(ServletRegistration.Dynamic	registration) {
+		registration.setMultipartConfig(getMultiPartConfigElement());
+	}
+
+	@Bean
+	private MultipartConfigElement getMultiPartConfigElement() {
+		// TODO Auto-generated method stub
+		return new	MultipartConfigElement(null, 5000000, 5000000, 0);
+	}
+	
+	
 
 }
