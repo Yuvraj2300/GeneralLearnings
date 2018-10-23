@@ -205,7 +205,9 @@ configurations {
 dependencies{
 	compile (spring.contextSupport)
 	compile (spring.securityTaglibs)
-	compile spring.data, hibernate.em, hibernate.validator, misc.slf4jJcl, misc.logback, misc.lang3, misc.guava, spring.webmvc 
+	compile spring.data, hibernate.em, hibernate.validator, misc.slf4jJcl, misc.logback, misc.lang3, misc.guava, spring.webmvc, db.h2 
+	//Added for REST Implementation as mentioned in the book.
+	compile spring.oxm, spring.webmvc, web.servlet, misc.castor, misc.jacksonDatabind, web.httpclient
 	provided web.servlet
 	compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '8.5.0'
 	
