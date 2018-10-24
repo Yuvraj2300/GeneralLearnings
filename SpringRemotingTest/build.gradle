@@ -196,23 +196,14 @@ repositories {
 		maven { url "https://repo.spring.io/libs-milestone" }
 		maven { url "https://maven.eveoh.nl/content/repositories/releases" }
 	}
-	
-	
-configurations {
-    provided
-}
 
 dependencies{
 	compile (spring.contextSupport)
 	compile (spring.securityTaglibs)
-	compile spring.data, hibernate.em, hibernate.validator, misc.slf4jJcl, misc.logback, misc.lang3, misc.guava, spring.webmvc, db.h2 
+	compile misc.slf4jJcl, misc.logback, misc.lang3, hibernate.em, misc.guava, db.h2,hibernate.tx
 	//Added for REST Implementation as mentioned in the book.
-	compile spring.oxm, spring.webmvc, web.servlet, misc.castor, misc.jacksonDatabind, web.httpclient
-	provided web.servlet
-	compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '8.5.0'
+	compile spring.oxm, spring.webmvc, web.servlet, misc.castor, misc.jacksonDatabind, web.httpclient,
+			spring.securityWeb, spring.securityConfig, spring.data
 	
-	compile (hibernate.tx) {
-		exclude group: 'org.hibernate', module: 'hibernate'
-	}
 	testCompile testing.junit
 }

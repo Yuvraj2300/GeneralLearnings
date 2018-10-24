@@ -14,10 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-import javax.validation.constraints.Size;
-
-
-
 
 @Entity
 @Table(name = "singer")
@@ -32,18 +28,15 @@ public class Singer implements Serializable {
 	@Version
 	@Column(name = "VERSION")
 	private int version;
-	// @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
-	@Size(min = 3, max = 60, message = "{validation.firstname.Size.message}")
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	// @NotEmpty(message = "{validation.lastname.NotEmpty.message}")
-	@Size(min = 1, max = 40, message = "{validation.lastname.Size.message}")
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "BIRTH_DATE")
 	private Date birthDate;
+
 
 	public Long getId() {
 		return id;
@@ -95,9 +88,9 @@ public class Singer implements Serializable {
 		return birthDateString;
 	}
 
-	/*@Override
-	public String toString() {
-		return "Singer - Id: " + id + ", First name: " + firstName + ", Last name: " + lastName + ", Birthday: "
-				+ birthDate + ", Description: " + description;
-	}*/
+	/*
+	 * @Override public String toString() { return "Singer - Id: " + id +
+	 * ", First name: " + firstName + ", Last name: " + lastName + ", Birthday: " +
+	 * birthDate + ", Description: " + description; }
+	 */
 }
