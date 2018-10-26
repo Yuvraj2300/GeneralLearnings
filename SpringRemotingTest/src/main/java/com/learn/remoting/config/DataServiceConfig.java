@@ -20,8 +20,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "com.learn.mvc.repo" })
-@ComponentScan(basePackages = { "com.learn.mvc" })
+@EnableJpaRepositories(basePackages = { "com.learn.remoting.repo" })
+@ComponentScan(basePackages = { "com.learn.remoting" })
 public class DataServiceConfig {
 
 	private static Logger logger = LoggerFactory.getLogger(DataServiceConfig.class);

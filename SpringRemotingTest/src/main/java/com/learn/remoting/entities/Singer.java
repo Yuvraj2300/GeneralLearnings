@@ -37,7 +37,6 @@ public class Singer implements Serializable {
 	@Column(name = "BIRTH_DATE")
 	private Date birthDate;
 
-
 	public Long getId() {
 		return id;
 	}

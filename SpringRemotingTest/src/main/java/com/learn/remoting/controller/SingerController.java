@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.learn.remoting.entities.Singer;
 import com.learn.remoting.services.SingerService;
+import com.learn.remoting.services.SingerServiceImpl;
 
 @Controller
 @RequestMapping("/singers")
@@ -24,7 +25,7 @@ public class SingerController {
 	private	SingerService	singerService;
 	
 	@ResponseStatus(HttpStatus.OK)
-//	@GetMapping("/all")
+	@GetMapping
 	@ResponseBody
 	public	List<Singer>	listAll(){
 		return	singerService.findAll();
