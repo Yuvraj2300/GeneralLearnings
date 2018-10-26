@@ -200,7 +200,7 @@ repositories {
 dependencies{
 	compile (spring.contextSupport)
 	compile (spring.securityTaglibs)
-	compile misc.slf4jJcl, misc.lang3, hibernate.em, misc.guava, db.h2,hibernate.tx
+	compile misc.slf4jJcl, misc.lang3, hibernate.em, misc.guava, db.h2,hibernate.tx, spring.aspects
 	//Added for REST Implementation as mentioned in the book.
 	compile spring.oxm, spring.webmvc, web.servlet, misc.castor, misc.jacksonDatabind, web.httpclient,
 			spring.securityWeb, spring.securityConfig, spring.data

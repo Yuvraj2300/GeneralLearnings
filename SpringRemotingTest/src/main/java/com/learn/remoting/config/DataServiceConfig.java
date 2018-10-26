@@ -70,7 +70,7 @@ public class DataServiceConfig {
 	@Bean
 	public EntityManagerFactory entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("com.learn.mvc.entities");
+		factoryBean.setPackagesToScan("com.learn.remoting.entities");
 		factoryBean.setDataSource(dataSource());
 		factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		factoryBean.setJpaProperties(hibernateProperties());

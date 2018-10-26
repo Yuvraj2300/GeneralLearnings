@@ -6,7 +6,7 @@
 		</field>
 	</class>
 
-	<class name="com.apress.prospring5.ch12.entities.Singer"
+	<class name="com.learn.mvc.entities.Singer"
 		identity="id">
 		<map-to xml="singer" />
 		<field name="id" type="long">

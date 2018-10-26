@@ -1,8 +1,5 @@
 package com.learn.remoting.entities;
 
-import java.beans.Transient;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,19 +14,19 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "singer")
-public class Singer implements Serializable {
-
-	private static final long serialVersionUID = -7499015218586134948L;
-
+public class Singer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
+
 	@Version
 	@Column(name = "VERSION")
 	private int version;
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
 
@@ -77,19 +74,5 @@ public class Singer implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	@Transient
-	public String getBirthDateString() {
-		String birthDateString = "";
-		if (birthDate != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			birthDateString = sdf.format(birthDate);
-		}
-		return birthDateString;
-	}
-
-	/*
-	 * @Override public String toString() { return "Singer - Id: " + id +
-	 * ", First name: " + firstName + ", Last name: " + lastName + ", Birthday: " +
-	 * birthDate + ", Description: " + description; }
-	 */
+	
 }

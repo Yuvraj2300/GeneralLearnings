@@ -5,16 +5,17 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.learn.remoting.entities.Singer;
 import com.learn.remoting.services.SingerService;
-import com.learn.remoting.services.SingerServiceImpl;
 
 @Controller
 @RequestMapping("/singers")
@@ -29,5 +30,10 @@ public class SingerController {
 	@ResponseBody
 	public	List<Singer>	listAll(){
 		return	singerService.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public	Singer	getOne(@PathVariable	Long	id) {
+		return	singerService.findById(id);
 	}
 }

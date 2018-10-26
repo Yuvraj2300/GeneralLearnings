@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Configuration
 @EnableWebMvc
+@EnableJpaAuditing
 @ComponentScan(basePackages = { "com.learn.remoting"})
 public class WebConfig implements WebMvcConfigurer {
 	@Autowired
@@ -57,21 +59,21 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(mappingJackson2HttpMessageConverter());
-		converters.add(singerMessageConverter());
+	//	converters.add(singerMessageConverter());
 	}
 
 	@Bean
 	MarshallingHttpMessageConverter singerMessageConverter() {
 		MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
-		mc.setMarshaller(castorMarshaller());
-		mc.setUnmarshaller(castorMarshaller());
+	/*	mc.setMarshaller(castorMarshaller());
+		mc.setUnmarshaller(castorMarshaller());*/
 		List<MediaType> mediaTypes = new ArrayList<>();
-		MediaType mt = new MediaType("application", "xml");
+		MediaType mt = new MediaType("application", "json");
 		mediaTypes.add(mt);
 		mc.setSupportedMediaTypes(mediaTypes);
 		return mc;
 	}
-
+/*
 	@SuppressWarnings("deprecation")
 	@Bean
 	CastorMarshaller castorMarshaller() {
@@ -79,4 +81,4 @@ public class WebConfig implements WebMvcConfigurer {
 		castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
 		return castorMarshaller;
 	}
-}
+*/}
