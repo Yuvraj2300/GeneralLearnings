@@ -10,5 +10,6 @@
 	<classpathentry kind="src" path="jax-ws"/>
 	<classpathentry kind="src" path="Chapter18Collections"/>
 	<classpathentry kind="src" path="Java8Features"/>
+	<classpathentry kind="src" path="cryptography"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
