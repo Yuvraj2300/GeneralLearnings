@@ -5,6 +5,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.learn.validation.entities.Singer;
+
 @Component("singerValidator")
 public class SingerValidator implements Validator {
 

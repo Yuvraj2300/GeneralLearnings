@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-import com.learn.validation.Singer;
 import com.learn.validation.config.AppConfig;
+import com.learn.validation.entities.Singer;
 
 public class ConvServDemo {
 	public	static	Logger	logger	=	LoggerFactory.getLogger(ConvServDemo.class);

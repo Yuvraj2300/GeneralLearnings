@@ -11,8 +11,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.learn.validation.Singer;
 import com.learn.validation.config.AppConfig;
+import com.learn.validation.entities.Singer;
 
 public class SpringValidatorDemo {
 	private static Logger logger = LoggerFactory.getLogger(SpringValidatorDemo.class);
