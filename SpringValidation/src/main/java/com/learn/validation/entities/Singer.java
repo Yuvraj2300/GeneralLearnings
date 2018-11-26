@@ -10,15 +10,24 @@ import org.joda.time.DateTime;
 
 public class Singer {
 	@NotNull
-	@Size(min=2,max=60)
+	@Size(min = 2, max = 60)
 	private String firstName;
+
 	private String lastName;
+
 	@NotNull
-	private	Genre	genre;
-	private	String	gender;
-	/*private DateTime birthDate;
-	private URL personalSite;
-*/
+	private Genre genre;
+
+//	Gender can be null as the can be either a male or female or a gay.
+//	So no validation applied on this field.
+	private String gender;
+
+	/*
+	 * private DateTime birthDate; 
+	 * private URL personalSite;
+	 * 
+	 */
+
 	public String getFirstName() {
 		return firstName;
 	}
