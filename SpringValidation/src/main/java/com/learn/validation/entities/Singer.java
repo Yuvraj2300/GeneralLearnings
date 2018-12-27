@@ -1,13 +1,11 @@
 package com.learn.validation.entities;
 
-import java.net.URL;
-import java.text.SimpleDateFormat;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.joda.time.DateTime;
+import com.learn.validation.CheckCountrySinger;
 
+@CheckCountrySinger
 public class Singer {
 	@NotNull
 	@Size(min = 2, max = 60)

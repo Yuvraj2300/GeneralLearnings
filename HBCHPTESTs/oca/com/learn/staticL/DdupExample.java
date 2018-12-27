@@ -6,13 +6,11 @@ import java.util.stream.Collectors;
 public class DdupExample {
 	public static void main(String[] args) {
 	//	String val = dDup("Yuvraj 123 123");
+	
 		//	18            ~980018
 		String	rowid	=	"18            ";
-		System.out.println(rowid);
-		rowid.trim();
-		System.out.println(rowid);
-		String	rowIdTrimmed	=	removeWhiteSpaces(rowid);
-		System.out.println(rowIdTrimmed);
+		String	rowIdTrimmed	=	rowid.replaceAll("\\s", "");
+	//	System.out.println(rowIdTrimmed);
 		String	prowId	=	"980018";
 		removeWhiteSpaces(prowId);
 		String	psrcKey	=	rowIdTrimmed+"~"+prowId;
