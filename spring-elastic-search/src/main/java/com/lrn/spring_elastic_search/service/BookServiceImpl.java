@@ -28,11 +28,11 @@ public class BookServiceImpl implements BookService {
 		bookRep.delete(book);
 	}
 
-	@Override
+	/*@Override
 	public Book findOne(String id) {
 		// TODO Auto-generated method stub
-		return bookRep.findOne(id);
-	}
+		return bookRep. findOne(id);
+	}*/
 
 	@Override
 	public Iterable<Book> findAll() {
@@ -48,6 +48,12 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> findByTitle(String title) {
 		return bookRep.findByTitle(title);
+	}
+
+	@Override
+	public Book findOne(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
