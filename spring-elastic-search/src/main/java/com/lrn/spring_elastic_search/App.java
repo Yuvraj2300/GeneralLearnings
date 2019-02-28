@@ -3,6 +3,7 @@ package com.lrn.spring_elastic_search;
 import java.util.Map;
 
 import org.elasticsearch.client.Client;
+import org.elasticsearch.common.settings.Settings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -49,11 +50,12 @@ public class App implements CommandLineRunner {
 	private void printElasticSearchInfo() {
 		System.out.println("--ElasticSearch--");
 		Client client = es.getClient();
-		Map<String, String> asMap = client.settings().getAsMap();
+		Map<String, Settings> asMap = client.settings().getAsGroups();
 
 		asMap.forEach((k, v) -> {
 			System.out.println(k + " = " + v);
 		});
+		
 		System.out.println("--ElasticSearch--");
 	}
 }
