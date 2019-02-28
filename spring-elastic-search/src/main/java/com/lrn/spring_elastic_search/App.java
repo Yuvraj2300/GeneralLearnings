@@ -40,7 +40,7 @@ public class App implements CommandLineRunner {
 		bookService.save(new Book("1003", "My India", "Jim Corbett", "26-FEB-2019"));
 
 		// fuzzey search
-		Page<Book> books = bookService.findByAuthor("Rambabu", new PageRequest(0, 10));
+		Page<Book> books = bookService.findByAuthor("Phil Knight", new PageRequest(0, 10));
 
 		// List<Book> books = bookService.findByTitle("Elasticsearch Basics");
 
