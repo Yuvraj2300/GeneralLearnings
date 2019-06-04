@@ -5,8 +5,11 @@ import java.util.Map;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.settings.Settings;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
@@ -20,15 +23,16 @@ import com.lrn.spring_elastic_search.service.BookService;
  */
 @SpringBootApplication
 public class App implements CommandLineRunner {
+	
 
-	@Autowired
+	@Autowired 
 	private ElasticsearchOperations es;
 
 	@Autowired
 	private BookService bookService;
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
+		SpringApplication.run(App.class,args);
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class App implements CommandLineRunner {
 		asMap.forEach((k, v) -> {
 			System.out.println(k + " = " + v);
 		});
-		
+
 		System.out.println("--ElasticSearch--");
 	}
 }

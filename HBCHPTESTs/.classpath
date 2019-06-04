@@ -11,5 +11,6 @@
 	<classpathentry kind="src" path="Chapter18Collections"/>
 	<classpathentry kind="src" path="Java8Features"/>
 	<classpathentry kind="src" path="cryptography"/>
+	<classpathentry kind="src" path="concurency"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

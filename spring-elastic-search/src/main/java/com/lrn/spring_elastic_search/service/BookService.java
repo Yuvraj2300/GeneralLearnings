@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Component;
 
 import com.lrn.spring_elastic_search.model.Book;
+import com.lrn.spring_elastic_search.repo.BookRepo;
 
-public interface BookService {
+@Component
+public interface BookService{
 	Book save(Book book);
 
 	void delete(Book book);
