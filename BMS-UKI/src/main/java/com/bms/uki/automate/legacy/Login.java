@@ -27,7 +27,7 @@ public class Login  {
 	public void LoginFunctionality() throws Exception
 	{   
 	
-		System.out.println(PropertiesReader.getValue("url"));
+	//	System.out.println(PropertiesReader.getValue("url"));
 
 		driver.get(ExcelReader.getValue("url"));
 		Thread.sleep(2000);
