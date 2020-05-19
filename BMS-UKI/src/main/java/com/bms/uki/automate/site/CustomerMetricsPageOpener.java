@@ -29,10 +29,10 @@ public class CustomerMetricsPageOpener {
 		wait.until(
 				ExpectedConditions.presenceOfAllElementsLocatedBy(
 						By.xpath(
-								"//div[@id='mstr115']")));
+								"//div[@id = 'mstr115']/ancestor::div[@class='mstrmojo-DocTextfield  hasLink']")));
 		d.findElement(
 				By.xpath(
-						"//div[@id='mstr115']")).click();
+						"//div[@id = 'mstr115']/ancestor::div[@class='mstrmojo-DocTextfield  hasLink']")).click();
 		
 		}catch(Exception	e) {
 			System.out.println(e.getMessage().toString());

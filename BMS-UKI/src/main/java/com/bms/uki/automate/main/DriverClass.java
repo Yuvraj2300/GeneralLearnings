@@ -5,15 +5,20 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.bms.uki.automate.model.CustomerListMetricsModel;
 import com.bms.uki.automate.model.LoginPageModel;
 import com.bms.uki.automate.site.CustomerMetricsPageOpener;
+import com.bms.uki.automate.site.CustomerMetricsParser;
 import com.bms.uki.automate.site.SiteLogin;
+import com.bms.uki.automate.xlwriter.WriteCustomerTab;
 
 public class DriverClass {
 	public static void main(String[] args) {
 
-		long timeout = 20;
+		long timeout = 55;
 		System.setProperty("webdriver.chrome.driver", "lib/chromedriver_81.exe");
+		WriteCustomerTab	custWrite	=	new	WriteCustomerTab();
+		CustomerListMetricsModel	metricsModel	=	new	CustomerListMetricsModel();
 		
 		try {
 			WebDriver driver = new ChromeDriver();
@@ -24,6 +29,10 @@ public class DriverClass {
 			SiteLogin.login(loginModel, driver);
 			
 			CustomerMetricsPageOpener.customerMetricsPage(driver, timeout);
+			metricsModel.setCoverage(CustomerMetricsParser.getCoverageValueFoorUICV(driver, timeout));
+			
+			custWrite.writeCustomerTab(metricsModel);
+			
 		}catch(Exception	e) {
 			System.out.println(e.getMessage().toString());
 		}
