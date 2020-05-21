@@ -20,7 +20,6 @@ import com.bms.uki.automate.xlwriter.utils.WorkbookFactory_Custom;
 
 public class WriteCustomerTab {
 	
-	@SuppressWarnings("deprecation")
 	public static void writeCustomerTab(CustomerListMetricsModel	metricsModel) throws FileNotFoundException {
 		int	fillerRow	=	2;
 		FileInputStream xlFile = new FileInputStream("lib/xlFiles/UKI_QC_Results.xlsx");
@@ -97,7 +96,18 @@ public class WriteCustomerTab {
 					}
 				}
 				
-				FileOutputStream	fileOut	=	new	FileOutputStream("lib/xlFiles/UKI_QC_Results.xlsx");
+				for(int i=0;i<cellsInMainRow;i++) {
+					if(mainRow.getCell(i).getStringCellValue().equals("THR")) {
+						if() {
+							
+						}
+					}
+				}
+				
+				SimpleDateFormat df_1	=	new	 SimpleDateFormat("M_dd_yy");
+				
+				FileOutputStream	fileOut	=	
+						new	FileOutputStream("lib/xlFiles/UKI_QC_Results_"+df_1.format(dateObj)+".xlsx");
 				wb.write(fileOut);
 				fileOut.close();
 				xlFile.close();

@@ -33,7 +33,7 @@ public class DriverClass {
 			
 			metricsModel.setCoverageUICV(CustomerMetricsParser.getCoverageValueFoorUICV(driver, timeout));
 			metricsModel.setCoverageUIIMM(CustomerMetricsParser.getCoverageValueFoorUIIMM(driver, timeout));
-			metricsModel.setCoverageUIIMM(CustomerMetricsParser.getCoverageValueFoorUIONC(driver, timeout));
+			metricsModel.setCoverageUIONC(CustomerMetricsParser.getCoverageValueFoorUIONC(driver, timeout));
 			
 			
 			custWrite.writeCustomerTab(metricsModel);
