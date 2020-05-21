@@ -9,7 +9,12 @@ public class CustomerMetricsPageOpener {
 	public static void customerMetricsPage(WebDriver d,long timeout) {
 		WebDriverWait	wait	=	new WebDriverWait(d, timeout);
 		
+
+		
 		try {
+		
+		Thread.sleep(5000);
+		
 		wait.until(
 				ExpectedConditions.presenceOfAllElementsLocatedBy(
 						By.xpath(
@@ -17,6 +22,7 @@ public class CustomerMetricsPageOpener {
 		d.findElement(By.xpath(
 				"//a[contains(text(),'UKI - CSCOR')]/ancestor::div[@class='mstrProjectItem']")).click();
 		
+		Thread.sleep(5000);
 		
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath(
@@ -25,6 +31,7 @@ public class CustomerMetricsPageOpener {
 				By.xpath(
 						"//a[contains(text(),'UK Home')]/ancestor::div[@class='mstrLargeIconItemContainer']")).click();
 		
+		Thread.sleep(5000);
 		
 		wait.until(
 				ExpectedConditions.presenceOfAllElementsLocatedBy(

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<locator>
+	<username path="id">bms-id</username>
+	<password path="xpath">//*[@id='bms-pass']</password>
+	<submit path="xpath">//button[@type='submit']</submit>
+</locator>
+
+

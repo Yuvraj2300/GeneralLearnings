@@ -1,5 +1,5 @@
 package com.bms.uki.automate.model;
-
+//depracated
 public class LoginPageModel {
 	private String username;
 	private String password;

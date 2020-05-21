@@ -25,11 +25,16 @@ public class DriverClass {
 			driver.manage().window().maximize();
 			driver.navigate().to("https://bmseu.mstr.zsservices.com/MSTRBMSEUWEB/html/BMSEU.html");
 	
-			LoginPageModel loginModel = new LoginPageModel("naseers", "sn2020sn");
-			SiteLogin.login(loginModel, driver);
+			SiteLogin.login(driver);		
 			
 			CustomerMetricsPageOpener.customerMetricsPage(driver, timeout);
-			metricsModel.setCoverage(CustomerMetricsParser.getCoverageValueFoorUICV(driver, timeout));
+			
+			Thread.sleep(20000);
+			
+			metricsModel.setCoverageUICV(CustomerMetricsParser.getCoverageValueFoorUICV(driver, timeout));
+			metricsModel.setCoverageUIIMM(CustomerMetricsParser.getCoverageValueFoorUIIMM(driver, timeout));
+			metricsModel.setCoverageUIIMM(CustomerMetricsParser.getCoverageValueFoorUIONC(driver, timeout));
+			
 			
 			custWrite.writeCustomerTab(metricsModel);
 			

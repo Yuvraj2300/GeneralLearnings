@@ -1,14 +1,32 @@
 package com.bms.uki.automate.model;
 
 public class CustomerListMetricsModel {
-	private String coverage;
+	private String coverageUICV;
+	private String coverageUIIMM;
+	private String coverageUIONC;
 
-	public String getCoverage() {
-		return coverage;
+	public String getCoverageUICV() {
+		return coverageUICV;
 	}
 
-	public void setCoverage(String coverage) {
-		this.coverage = coverage;
+	public void setCoverageUICV(String coverageUICV) {
+		this.coverageUICV = coverageUICV;
+	}
+
+	public String getCoverageUIIMM() {
+		return coverageUIIMM;
+	}
+
+	public void setCoverageUIIMM(String coverageUIIMM) {
+		this.coverageUIIMM = coverageUIIMM;
+	}
+
+	public String getCoverageUIONC() {
+		return coverageUIONC;
+	}
+
+	public void setCoverageUIONC(String coverageUIONC) {
+		this.coverageUIONC = coverageUIONC;
 	}
 
 }
