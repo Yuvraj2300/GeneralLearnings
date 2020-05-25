@@ -36,7 +36,7 @@ public class DriverClass {
 			metricsModel.setCoverageUIONC(CustomerMetricsParser.getCoverageValueFoorUIONC(driver, timeout));
 			
 			
-			custWrite.writeCustomerTab(metricsModel);
+			WriteCustomerTab.writeCustomerTab(metricsModel);
 			
 		}catch(Exception	e) {
 			System.out.println(e.getMessage().toString());
