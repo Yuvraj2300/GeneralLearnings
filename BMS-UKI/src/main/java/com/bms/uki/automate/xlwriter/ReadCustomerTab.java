@@ -18,6 +18,8 @@ public class ReadCustomerTab {
 		CustomerMetricsParser parserObj = new CustomerMetricsParser();
 		HashMap<Integer, HashMap<String, String>> rowMap = new HashMap<>();
 		HashMap<String, String> metricsMap = new HashMap<>();
+		
+		int mapCounter = 0;
 
 		try {
 //			Workbook wb = WorkbookFactory_Custom.createWorkBook(new FileInputStream("resources/UKI_QC_Config.xlsm"));
@@ -26,7 +28,7 @@ public class ReadCustomerTab {
 
 			DataFormatter dataf = new DataFormatter();
 
-			for (int i = 2; i < configSheet.getLastRowNum(); i++) {
+			for (int i = 2; i < configSheet.getLastRowNum()-1; i++) {
 				if (dataf.formatCellValue(configSheet.getRow(i).getCell(1)).equals("")
 						|| configSheet.getRow(i).getCell(1) == null) {
 					break;
@@ -49,7 +51,7 @@ public class ReadCustomerTab {
 				metricsModel.setTimeSeen(dataf.formatCellValue(configSheet.getRow(i).getCell(9)));
 				metricsMap.put("time seen", metricsModel.getTimeSeen());
 
-				int mapCounter = 0;
+			
 
 				
 				parserObj.setAllMetricsOnPage(d, 50, metricsMap);

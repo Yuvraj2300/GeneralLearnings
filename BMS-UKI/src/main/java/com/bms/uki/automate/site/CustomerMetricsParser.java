@@ -220,48 +220,55 @@ public class CustomerMetricsParser {
 	
 	
 	public void setAllMetricsOnPage(WebDriver d, long timeout, HashMap<String, String> filterMap) {
-
+		
+		int counter	=	0;
+		
 		List<String> mapValues = new ArrayList<String>(filterMap.values());
+		mapValues.replaceAll(String::toUpperCase);
+		
 		Actions action = new Actions(d);
 		
 		
 		try {
 			WebDriverWait wait = new WebDriverWait(d, timeout);
 			
-			
-			
-			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(
-					"//*[@class='mstrmojo-ui-Pulldown-text express']/ancestor::div[@class='mstrmojo-ui-Pulldown']")));
+			for(int i=0;i<5;i++) {
+				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(
+						"//*[@class='mstrmojo-ui-Pulldown-text express']/ancestor::div[@class='mstrmojo-ui-Pulldown']")));
 
-			List<WebElement> dropdowns = d.findElements(By.xpath(
-					"//*[@class='mstrmojo-ui-Pulldown-text express']/ancestor::div[@class='mstrmojo-ui-Pulldown']"));
+				List<WebElement> dropdowns = d.findElements(By.xpath(
+						"//*[@class='mstrmojo-ui-Pulldown-text express']/ancestor::div[@class='mstrmojo-ui-Pulldown']"));
 
-			for (WebElement dropdown : dropdowns) {
-				dropdown.click();
+				while(counter<5) {
+					WebElement dropdown	=	dropdowns.get(counter);
+					dropdown.click();
 
-				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-						By.cssSelector("div.mstrmojo-popupList-scrollBar.mstrmojo-scrollNode > div > div.item")));
+					wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+							By.cssSelector("div.mstrmojo-popupList-scrollBar.mstrmojo-scrollNode > div > div.item")));
 
-				List<WebElement> dropdownElements = d.findElements(
-						By.cssSelector("div.mstrmojo-popupList-scrollBar.mstrmojo-scrollNode > div > div.item"));
+					List<WebElement> dropdownElements = d.findElements(
+							By.cssSelector("div.mstrmojo-popupList-scrollBar.mstrmojo-scrollNode > div > div.item"));
 
-				for (WebElement element : dropdownElements) {
-					
-					
-					if (!(element.getText().equals("")) && !(element.getText().isEmpty())) {
+					for (WebElement element : dropdownElements) {
+						if (!(element.getText().equals("")) && !(element.getText().isEmpty())) {
 
-						String dropdownText	=	element.getText();
-						System.out.println("drpdown txt: "+dropdownText);
+							String dropdownText	=	element.getText();
+							System.out.println("drpdown txt: "+dropdownText);
 						
-						if(mapValues.contains(dropdownText)) {
-							
-							action.moveToElement(element).click().perform();
-							Thread.sleep(10000);
-							dropdown.click();
+							if(mapValues.contains(dropdownText.toUpperCase())) {
+								
+								action.moveToElement(element).click().perform();
+								Thread.sleep(10000);
+								break;
+							}
 						}
 					}
+					counter++;
+					break;
 				}
 			}
+			
+		
 		} catch (Exception e) {
 			e.getMessage().toString();
 		}
@@ -282,10 +289,21 @@ public class CustomerMetricsParser {
 
 		return coverage;
 	}
-
-	/*
-	 * coverageValue = d .findElement(
-	 * By.xpath("//td[contains(@class,'r-c14_K83')]/ancestor::div[@id='mstr124']"))
-	 * .getText();
-	 */
+	
+	public static boolean checkElement(WebDriver d, WebDriverWait wait, String xpath, String type) {
+		if (type.equalsIgnoreCase("dropdown")) {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			d.findElement(By.xpath(xpath)).click();
+			return true;
+		} else if(type.equalsIgnoreCase("dropdown-element")){
+			d.findElement(By.xpath(xpath));
+			return true;
+		}
+		return false;
+	}
+	
+	public	static	void	updateElementList(WebDriver d,List<WebElement> dropdowns) {
+		dropdowns	=	d.findElements(By.xpath(
+				"//*[@class='mstrmojo-ui-Pulldown-text express']/ancestor::div[@class='mstrmojo-ui-Pulldown']"));
+	}
 }
