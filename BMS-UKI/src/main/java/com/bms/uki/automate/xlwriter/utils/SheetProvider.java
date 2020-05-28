@@ -10,7 +10,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import com.bms.uki.automate.model.ExcelReaderSingleton;
+import com.bms.uki.automate.singleton.ExcelReaderSingleton;
 
 public class SheetProvider {
 

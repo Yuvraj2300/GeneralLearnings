@@ -2,6 +2,7 @@ package com.bms.uki.automate.legacy;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,18 +17,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.bms.uki.automate.model.XMLReaderSingleton;
-
 public class ReadXMLData {
 
 	public static WebElement readXmlData(WebDriver driver, String data)
 			throws ParserConfigurationException, SAXException, IOException {
 		String Loc = null, path = null;
-		File file = XMLReaderSingleton.getInstance("resources/OR.xml");
+//		File file = XMLReaderSingleton.getInstance("resources/xpathXML/OR.xml");
 
 		DocumentBuilderFactory Df = DocumentBuilderFactory.newInstance();
 		DocumentBuilder Db = Df.newDocumentBuilder();
-		Document document = Db.parse(file);
+		Document document = Db.parse(ReadXMLData.class.getResourceAsStream("/xpathXML/OR.xml"));
 
 		NodeList list = document.getElementsByTagName("locator");
 		Node node1 = list.item(0);

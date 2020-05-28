@@ -1,17 +1,28 @@
 package com.bms.uki.automate.model;
-//depracated
-public class LoginPageModel {
-	private String username;
-	private String password;
 
-	public LoginPageModel(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
+public class LoginPageModel {
+	private static	String username;
+	private	static 	String resultsLocation;
+	private static	String reportLink;
+
+	public String getResultsLocation() {
+		return resultsLocation;
 	}
 
-	public LoginPageModel LoginPage(String username, String password) {
-		return new LoginPageModel(username, password);
+	public void setResultsLocation(String resultsLocation) {
+		LoginPageModel.resultsLocation = resultsLocation;
+	}
+
+	public String getReportLink() {
+		return reportLink;
+	}
+
+	public void setReportLink(String reportLink) {
+		LoginPageModel.reportLink = reportLink;
+	}
+
+	public LoginPageModel() {
+		super();
 	}
 
 	public String getUsername() {
@@ -19,15 +30,7 @@ public class LoginPageModel {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+		LoginPageModel.username = username;
 	}
 
 }

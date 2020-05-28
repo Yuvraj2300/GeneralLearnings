@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<locator>
+	<username path="id">bms-id</username>
+	<password path="xpath">//*[@id='bms-pass']</password>
+	<submit path="xpath">//button[@type='submit']</submit>
+	<ukicsor path="xpath">//a[contains(text(),'UKI - CSCOR')]/ancestor::div[@class='mstrProjectItem']</ukicsor>
+	<ukhome path="xpath">//a[contains(text(),'UK Home')]/ancestor::div[@class='mstrLargeIconItemContainer']</ukhome>
+	<customerlist path="xpath">//div[contains(text(),'Customer List')]</customerlist>	
+</locator>

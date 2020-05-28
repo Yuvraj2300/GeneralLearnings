@@ -258,7 +258,7 @@ public class CustomerMetricsParser {
 							if(mapValues.contains(dropdownText.toUpperCase())) {
 								
 								action.moveToElement(element).click().perform();
-								Thread.sleep(10000);
+								Thread.sleep(6500);
 								break;
 							}
 						}

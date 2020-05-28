@@ -17,15 +17,11 @@ public class ReadCustomerTab {
 		CustomerListMetricsModel metricsModel = new CustomerListMetricsModel();
 		CustomerMetricsParser parserObj = new CustomerMetricsParser();
 		HashMap<Integer, HashMap<String, String>> rowMap = new HashMap<>();
-		HashMap<String, String> metricsMap = new HashMap<>();
+		HashMap<String, String> metricsMap;
 		
 		int mapCounter = 0;
 
 		try {
-//			Workbook wb = WorkbookFactory_Custom.createWorkBook(new FileInputStream("resources/UKI_QC_Config.xlsm"));
-//			SheetFactory sf = new SheetFactory();
-//			Sheet sheet = sf.getSheet(wb, "CUSTOMER");
-
 			DataFormatter dataf = new DataFormatter();
 
 			for (int i = 2; i < configSheet.getLastRowNum()-1; i++) {
@@ -33,6 +29,9 @@ public class ReadCustomerTab {
 						|| configSheet.getRow(i).getCell(1) == null) {
 					break;
 				}
+				
+				metricsMap	= new HashMap<>();
+				
 				metricsModel.setGeography(dataf.formatCellValue(configSheet.getRow(i).getCell(4)));
 				metricsMap.put("geography", metricsModel.getGeography());
 

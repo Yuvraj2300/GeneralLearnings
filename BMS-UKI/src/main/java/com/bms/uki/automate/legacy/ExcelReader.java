@@ -1,19 +1,22 @@
 package com.bms.uki.automate.legacy;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.bms.uki.automate.main.DriverClass;
+import com.bms.uki.automate.model.LoginPageModel;
+
 public class ExcelReader {
 
-	public static final String Excel = "resources/UKI_QC_Config.xlsm";
+//	public static final String Excel = "resources/UKI_QC_Config.xlsm";
 
 	private static FileInputStream fis;
 	private static XSSFWorkbook workbook;
@@ -21,9 +24,15 @@ public class ExcelReader {
 	private static XSSFRow row;
 
 	public static void loadExcel() throws Exception {
+
+//		FileInputStream configFis = new FileInputStream("resources/config/config.properties");
+
+		Properties prop = new Properties();
+		prop.load(DriverClass.class.getResourceAsStream("/config/config.properties"));
+
 		System.out.println("Loading Excel...");
 
-		File file = new File(Excel);
+		File file = new File(prop.getProperty("configFile"));
 		fis = new FileInputStream(file);
 		workbook = new XSSFWorkbook(fis);
 		sheet = workbook.getSheet("Login Config");
@@ -37,17 +46,26 @@ public class ExcelReader {
 			loadExcel();
 		}
 
+		LoginPageModel loginPageModel = new LoginPageModel();
+
 		Map<String, Map<String, String>> superMap = new HashMap<String, Map<String, String>>();
 		Map<String, String> myMap = new HashMap<String, String>();
 
-		for(int i=0;i<sheet.getLastRowNum();i++) {
-			row	=	sheet.getRow(i);
-			
-			if(row.getCell(1) != null &&
-					!(row.getCell(1).getStringCellValue().equals("")) &&
-						!(row.getCell(1).getStringCellValue().equals("Login Configuaration"))) {
-				String keyValue	=	row.getCell(1).getStringCellValue().replace(":", "").toUpperCase();
-				String value	=	row.getCell(2).getStringCellValue();
+		for (int i = 0; i < sheet.getLastRowNum(); i++) {
+			row = sheet.getRow(i);
+
+			if (row.getCell(1) != null && !(row.getCell(1).getStringCellValue().equals(""))
+					&& !(row.getCell(1).getStringCellValue().equals("Login Configuration"))) {
+				String keyValue = row.getCell(1).getStringCellValue().replace(":", "").toUpperCase();
+				String value = row.getCell(2).getStringCellValue();
+				
+				if (keyValue.equalsIgnoreCase("report link")) {
+					loginPageModel.setReportLink(row.getCell(2).getStringCellValue());
+				} else if (keyValue.equalsIgnoreCase("username")) {
+					loginPageModel.setUsername(row.getCell(2).getStringCellValue());
+				} else if (keyValue.equalsIgnoreCase("results location")) {
+					loginPageModel.setResultsLocation(row.getCell(2).getStringCellValue());
+				}
 				
 				myMap.put(keyValue, value);
 			}
@@ -84,14 +102,14 @@ public class ExcelReader {
 	}
 
 	public static String getValue(String key) throws Exception {
-		String retValue	=	"";
+		String retValue = "";
 		Map<String, String> myVal = getDataMap().get("MASTERDATA");
-		String keyUpper	=	key.toUpperCase();
-		
-		if(myVal.containsKey(keyUpper)) {
-			retValue = myVal.get(keyUpper);	
+		String keyUpper = key.toUpperCase();
+
+		if (myVal.containsKey(keyUpper)) {
+			retValue = myVal.get(keyUpper);
 		}
-		
+
 		return retValue;
 	}
 
