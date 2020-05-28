@@ -17,28 +17,23 @@ public class DriverClass {
 
 		long timeout = 55;
 		System.setProperty("webdriver.chrome.driver", "lib/chromedriver_81.exe");
-		WriteCustomerTab	custWrite	=	new	WriteCustomerTab();
-		CustomerListMetricsModel	metricsModel	=	new	CustomerListMetricsModel();
-		
+		WriteCustomerTab custWrite = new WriteCustomerTab();
+		CustomerListMetricsModel metricsModel = new CustomerListMetricsModel();
+
 		try {
 			WebDriver driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.navigate().to("https://bmseu.mstr.zsservices.com/MSTRBMSEUWEB/html/BMSEU.html");
-	
-			SiteLogin.login(driver);		
-			
+
+			SiteLogin.login(driver);
+
 			CustomerMetricsPageOpener.customerMetricsPage(driver, timeout);
-			
+
 			Thread.sleep(20000);
-			
-			metricsModel.setCoverageUICV(CustomerMetricsParser.getCoverageValueFoorUICV(driver, timeout));
-			metricsModel.setCoverageUIIMM(CustomerMetricsParser.getCoverageValueFoorUIIMM(driver, timeout));
-			metricsModel.setCoverageUIONC(CustomerMetricsParser.getCoverageValueFoorUIONC(driver, timeout));
-			
-			
-			WriteCustomerTab.writeCustomerTab(metricsModel);
-			
-		}catch(Exception	e) {
+
+			WriteCustomerTab.writeCustomerTab(driver, metricsModel);
+
+		} catch (Exception e) {
 			System.out.println(e.getMessage().toString());
 		}
 	}

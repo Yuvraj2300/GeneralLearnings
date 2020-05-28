@@ -26,7 +26,7 @@ public class ExcelReader {
 		File file = new File(Excel);
 		fis = new FileInputStream(file);
 		workbook = new XSSFWorkbook(fis);
-		sheet = workbook.getSheet("Login");
+		sheet = workbook.getSheet("Login Config");
 		fis.close();
 
 	}
@@ -40,18 +40,19 @@ public class ExcelReader {
 		Map<String, Map<String, String>> superMap = new HashMap<String, Map<String, String>>();
 		Map<String, String> myMap = new HashMap<String, String>();
 
-		for (int i = 1; i < sheet.getLastRowNum() + 1; i++) {
-			row = sheet.getRow(i);
-			String keyCell = row.getCell(0).getStringCellValue();
-
-			int colNum = row.getLastCellNum();
-			// System.out.println(colNum);
-			for (int j = 1; j < colNum; j++) {
-				String value = row.getCell(j).getStringCellValue();
-				myMap.put(keyCell, value);
+		for(int i=0;i<sheet.getLastRowNum();i++) {
+			row	=	sheet.getRow(i);
+			
+			if(row.getCell(1) != null &&
+					!(row.getCell(1).getStringCellValue().equals("")) &&
+						!(row.getCell(1).getStringCellValue().equals("Login Configuaration"))) {
+				String keyValue	=	row.getCell(1).getStringCellValue().replace(":", "").toUpperCase();
+				String value	=	row.getCell(2).getStringCellValue();
+				
+				myMap.put(keyValue, value);
 			}
-			superMap.put("MASTERDATA", myMap);
 		}
+		superMap.put("MASTERDATA", myMap);
 		return superMap;
 	}
 
@@ -83,8 +84,14 @@ public class ExcelReader {
 	}
 
 	public static String getValue(String key) throws Exception {
+		String retValue	=	"";
 		Map<String, String> myVal = getDataMap().get("MASTERDATA");
-		String retValue = myVal.get(key);
+		String keyUpper	=	key.toUpperCase();
+		
+		if(myVal.containsKey(keyUpper)) {
+			retValue = myVal.get(keyUpper);	
+		}
+		
 		return retValue;
 	}
 
