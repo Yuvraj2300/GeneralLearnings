@@ -1,19 +1,20 @@
 package com.bms.uki.automate.xlwriter;
 
-import java.io.FileInputStream;
 import java.util.HashMap;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.bms.uki.automate.model.CustomerListMetricsModel;
 import com.bms.uki.automate.site.CustomerMetricsParser;
-import com.bms.uki.automate.xlwriter.utils.SheetFactory;
-import com.bms.uki.automate.xlwriter.utils.WorkbookFactory_Custom;
 
 public class ReadCustomerTab {
 	public HashMap<Integer, HashMap<String, String>> readTab(WebDriver d, Sheet configSheet) {
+		Logger	logger	=	LoggerFactory.getLogger(ReadCustomerTab.class);
+		
 		CustomerListMetricsModel metricsModel = new CustomerListMetricsModel();
 		CustomerMetricsParser parserObj = new CustomerMetricsParser();
 		HashMap<Integer, HashMap<String, String>> rowMap = new HashMap<>();
@@ -52,10 +53,11 @@ public class ReadCustomerTab {
 
 			
 
-				
+				logger.info("Value Map Poulated, now setting the dropdown values");
 				parserObj.setAllMetricsOnPage(d, 50, metricsMap);
+				logger.info("Getting coverage value for the current filters");
 				metricsMap.put("coverage", parserObj.getCoverageValue(d, 50));
-
+				
 				rowMap.put(mapCounter, metricsMap);
 				mapCounter++;
 			}
