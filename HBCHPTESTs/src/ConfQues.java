@@ -4,14 +4,14 @@ public class ConfQues {
 		System.out.println("In String");
 	}
 
-	public static void test(Integer s) {
+	/*public static void test(Integer s) {
 		System.out.println("In Integer");
 	}
+	*/
 	
-	
-//	public static void test(Object o) {
-//		System.out.println("In object");
-//	}
+	public static void test(Object o) {
+		System.out.println("In object");
+	}
 
 	public static int meth() {
 		try {

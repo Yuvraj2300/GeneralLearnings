@@ -6,12 +6,12 @@ import java.util.TreeSet;
 public class CompdDemo {
 	
 	public static void main(String[] args) {
-		int i=2/0;
+//		int i=2/0;
 		
 		MyComp_1 comp	=	new MyComp_1();
 		
 		TreeSet<String> ts = new TreeSet<>(new MyComp());
-		TreeSet<String> ts_1 = new TreeSet<>(comp.reversed());
+		TreeSet<String> ts_1 = new TreeSet<>(comp);
 
 		
 		
