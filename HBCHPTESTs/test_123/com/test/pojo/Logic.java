@@ -1,19 +1,31 @@
 package com.test.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class Logic implements BiPredicate<Product, MatchingCriteria>{
+public class Logic {
 
-	@Override
-	public boolean test(Product t, MatchingCriteria u) {
-		t.test(t)
-		
-		return false
+	public static void main(String[] args) {
+
+		List<Product> products = new ArrayList<>();
+		products.add(new Product("A", Colors.GREEN, "Large"));
+		products.add(new Product("B", Colors.RED, "Medium"));
+		products.add(new Product("C", Colors.RED, "Medium"));
+		products.add(new Product("B", Colors.BLUE, "Small"));
+
+		Predicate<Product> redColor = (p) -> {
+			return p.getColor().equals(Colors.RED);
+		};
+
+		Predicate<Product> medSize = (p) -> {
+			return p.getSize().equalsIgnoreCase("medium");
+		};
+
+		System.out.println("With Medium size");
+		Product.match(products, medSize);
+		System.out.println("With Red color");
+		Product.match(products, redColor);
 	}
-	/*static List<Product> match(List<Product> products, List<MatchingCriteria> matchingCriterias) {
-		return null;
-	}*/
 
 }
